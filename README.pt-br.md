@@ -1,3 +1,7 @@
+> 🇺🇸 **To read the English version of this project, [click here](README.md).**
+
+---
+
 # 🏛️ Chronos: Sistema de Detecção Arqueológica via IA
 
 ![Python](https://img.shields.io/badge/Python-3.8%2B-blue)
