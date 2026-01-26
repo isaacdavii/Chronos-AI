@@ -1,3 +1,7 @@
+> 🇧🇷 **Para ler a versão em Português deste projeto, [clique aqui](README.pt-br.md).**
+
+---
+
 # 🏛️ Chronos: Archaeological AI Detection System
 
 ![Python](https://img.shields.io/badge/Python-3.8%2B-blue)
