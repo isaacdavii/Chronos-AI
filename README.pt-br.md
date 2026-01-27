@@ -79,3 +79,24 @@ Este projeto foi desenvolvido para rodar no **Google Colab** ou **Jupyter Notebo
 ### Pré-requisitos
 ```bash
 pip install pandas numpy scikit-learn plotly folium matplotlib
+```
+
+---
+
+## 👨‍💻 Autor
+
+**Isaac Davi** *Desenvolvedor*
+
+Construído como um projeto de portfólio explorando a interseção entre **História** e **Tecnologia**.  
+Sinta-se à vontade para entrar em contato para colaborações ou dúvidas.
+
+---
+
+## 📄 Licença
+
+Este projeto é de uso **acadêmico e educacional**.
+
+* **Livre uso:** Você pode modificar e distribuir este código para fins de aprendizado e pesquisa.
+* **Dados Sintéticos:** Observe que os dados arqueológicos gerados neste pipeline são **simulados** (geração procedural) e não representam sítios reais protegidos.
+
+---
