@@ -17,9 +17,9 @@ import plotly.express as px
 
 # --- PAGE CONFIGURATION ---
 st.set_page_config(
-    page_title="Chronos: AI Archaeology",
-    layout="wide",
-    page_icon="🏛️"
+    page_title = "Chronos: AI Archaeology",
+    layout = "wide",
+    page_icon = "🏛️"
 )
 
 # --- HEADER ---
@@ -150,4 +150,5 @@ if st.sidebar.button("🔍 Start Scan", type = "primary"):
         )
 
 else:
+
     st.info("👈 Adjust parameters in the sidebar and click 'Start Scan'.")
