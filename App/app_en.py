@@ -61,7 +61,7 @@ def generate_demo_data():
     df_noise = pd.DataFrame({'x': x_noise, 'y': y_noise, 'z': z_noise, 'type': 'Noise'})
     df_wall = pd.DataFrame({'x': x_wall, 'y': y_wall, 'z': z_wall, 'type': 'Real Wall'})
     
-    return pd.concat([df_noise, df_wall], ignore_index=True)
+    return pd.concat([df_noise, df_wall], ignore_index = True)
 
 # --- LOAD DATA ---
 if uploaded_file is not None:
@@ -152,3 +152,4 @@ if st.sidebar.button("🔍 Start Scan", type = "primary"):
 else:
 
     st.info("👈 Adjust parameters in the sidebar and click 'Start Scan'.")
+
