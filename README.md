@@ -42,13 +42,13 @@ This repository serves as a study guide on technologies that are revolutionizing
 
 The project is divided into two progressive modules:
 
-### 1. [Chronos Part I: Vector Fundamentals](Chronos_Aqueologia_Parte_I.ipynb)
+### 1. [Chronos Part I: Vector Fundamentals](Notebooks/en/Chronos_Archaeology_Part_I.ipynb)
 Focused on the introduction to computational geometry and linear pattern detection.
 * **Scenarios:** Inca Wall (Sine wave), Circular Village, and Necropolis.
 * **Technique:** Vector data ($X, Y, Z$).
 * **Visualization:** Scatter plots and Folium Maps.
 
-### 2. [Chronos Part II: Advanced Simulation (Raster)](Chronos_Arqueologia_Parte_II.ipynb)
+### 2. [Chronos Part II: Advanced Simulation (Raster)](Notebooks/en/Chronos_Aqueologia_Parte_II.ipynb)
 Simulation of a real high-resolution geophysical survey (GPR).
 * **Scenario:** A "Subterranean Basilica" hidden in a 4-million-point matrix.
 * **Pipeline:**
