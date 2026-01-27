@@ -80,3 +80,23 @@ This project was developed to run on **Google Colab** or **Jupyter Notebook**.
 ```bash
 pip install pandas numpy scikit-learn plotly folium matplotlib
 ```
+
+---
+
+## 👨‍💻 Author
+
+**Isaac Davi** *Developer*
+
+Built as a portfolio project exploring the intersection of **History** and **Technology**.  
+Feel free to reach out for collaborations or questions.
+
+---
+
+## 📄 License
+
+This project is intended for **academic and educational purposes**.
+
+* **Free to use:** You may modify and distribute this code for learning and research.
+* **Synthetic Data:** Please note that the archaeological data generated in this pipeline is **simulated** (procedural generation) and does not represent real protected sites.
+
+---
