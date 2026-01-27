@@ -47,6 +47,13 @@ Focado na introdução à geometria computacional e detecção de padrões linea
 * **Cenários:** Muralha Inca (Senoide) e Aldeia Circular.
 * **Técnica:** Dados vetoriais ($X, Y, Z$).
 * **Visualização:** Gráficos de dispersão e Mapas Folium.
+**📸 Galeria da Parte I:**
+<p align="center">
+  <img src="Assets/CircularVillage.png" alt="Detecção de Vila Circular" width="45%">
+  <img src="Assets/Necropolis.png" alt="Detecção de Necrópole" width="45%">
+  <br>
+  <em>Fig 1: Detecção de estruturas circulares (Vilas) e clusters lineares (Necrópole).</em>
+</p>
 
 ### 2. [Chronos Parte II: Simulação Avançada (Raster)](Chronos_Arqueologia_Parte_II.ipynb)
 Simulação de uma prospecção geofísica real (GPR) em alta resolução.
@@ -61,14 +68,25 @@ Simulação de uma prospecção geofísica real (GPR) em alta resolução.
 
 ## 📊 Resultados Visuais
 
-O sistema é capaz de transformar dados brutos e ruidosos em plantas baixas limpas:
+> **Nota:** O GitHub exibe apenas imagens estáticas abaixo. Para interagir com os gráficos 3D (rotacionar/zoom), por favor abra os notebooks no **Google Colab**.
 
-| Dados Brutos (Simulação GPR) | Detecção por IA (DBSCAN) | Planta Final (Vetorizada) |
-|:---:|:---:|:---:|
-| *Ruído e Sinal Misturados* | *Clusterização 3D* | *Estruturas Identificadas* |
-| (Inserir imagem do Heatmap) | (Inserir imagem do Plotly) | (Inserir imagem da Planta) |
+O sistema transforma dados geofísicos brutos em plantas de engenharia acionáveis:
 
-> *Exemplo: O sistema filtrou 95% do ruído geológico e identificou a planta em Cruz Latina da basílica simulada.*
+### 1. Do Sinal ao Mapa (O Pipeline de Engenharia)
+Comparação entre a entrada bruta de GPR (raster) e a planta vetorial final gerada pelo Chronos.
+
+| Dados Brutos (Entrada) | Planta Arqueológica Final (Saída) |
+|:---:|:---:|
+| ![Heatmap da Basílica](Assets/BasilicaHeatmap.png) | ![Planta Final](Assets/PlanImage.png) |
+| *Mapa de Calor 2D Ruidoso (GPR Simulado)* | *Mapa Vetorial Limpo pronto para escavação* |
+
+### 2. A IA em Ação (Processamento DBSCAN)
+Como o algoritmo visualiza os dados no espaço 3D para separar paredes estruturais de ruído geológico.
+
+| Fase I: Detecção (Ruidoso) | Fase II: Refinamento (Limpo) |
+|:---:|:---:|
+| ![Clusterização IA](Assets/Basilica3D_I.png) | ![Modelo 3D](Assets/Basilica3D_II.png) |
+| *DBSCAN identificando clusters em meio ao ruído.* | *Modelo 3D Final após filtragem heurística.* |
 
 ---
 
