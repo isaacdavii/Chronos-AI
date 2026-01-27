@@ -61,7 +61,7 @@ def gerar_dados_demo():
     df_ruido = pd.DataFrame({'x': x_ruido, 'y': y_ruido, 'z': z_ruido, 'tipo': 'Ruído'})
     df_muro = pd.DataFrame({'x': x_muro, 'y': y_muro, 'z': z_muro, 'tipo': 'Muro Real'})
     
-    return pd.concat([df_ruido, df_muro], ignore_index=True)
+    return pd.concat([df_ruido, df_muro], ignore_index = True)
 
 # --- CARREGAMENTO ---
 if uploaded_file is not None:
@@ -150,4 +150,5 @@ if st.sidebar.button("🔍 Iniciar Escaneamento", type = "primary"):
         )
 
 else:
+
     st.info("👈 Ajuste os parâmetros na barra lateral e clique em 'Iniciar Escaneamento'.")
