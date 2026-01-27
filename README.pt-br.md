@@ -6,7 +6,9 @@
 
 ![Python](https://img.shields.io/badge/Python-3.8%2B-blue)
 ![Machine Learning](https://img.shields.io/badge/AI-Unsupervised-orange)
-![Status](https://img.shields.io/badge/Status-Prototype-green)
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://chronos-ai-archeology.streamlit.app/)
+
+> **🔴 Demo Online:** Clique no selo "Streamlit" acima ou [acesse o dashboard aqui](https://chronos-ai-archeology.streamlit.app/) para interagir com o modelo 2D e 3D em tempo real.
 
 > **"A tecnologia não reinventa o passado, mas nos dá novas lentes para enxergá-lo."**
 
