@@ -90,6 +90,35 @@ How the algorithm visualizes data in 3D space to separate structural walls from 
 
 ---
 
+## 🎮 Interactive Web App (Deployment)
+
+To bridge the gap between code and field operations, Chronos includes a production-ready dashboard built with **Streamlit**. This tool allows archaeologists to interact with the algorithm without writing a single line of Python.
+
+![Dashboard Preview](Assets/Dashboard_Demo_en.png)
+
+### Key Features:
+* **Real-time Tuning:** Adjust `Epsilon` and `Density` sliders to see immediate changes in the 3D model.
+* **Heuristic Filter:** Control the post-processing threshold to clean debris dynamically.
+* **Export:** Download the processed vector data (`.csv`) directly from the browser.
+
+### 🚀 How to Run the App
+To launch the dashboard locally:
+
+1.  Install Streamlit:
+    ```bash
+    pip install streamlit
+    ```
+2.  Run the application (Choose your language):
+    ```bash
+    # For English Version
+    streamlit run app/app_en.py
+    
+    # Para Versão em Português
+    streamlit run app/app_pt.py
+    ```
+
+---
+
 ## 🚀 How to Run
 
 This project was developed to run on **Google Colab** or **Jupyter Notebook**.
