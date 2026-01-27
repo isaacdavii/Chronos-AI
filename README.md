@@ -49,8 +49,8 @@ Focused on the introduction to computational geometry and linear pattern detecti
 * **Visualization:** Scatter plots and Folium Maps.
 **📸 Part I Gallery:**
 <p align="center">
-  <img src="assets/CircularVillage.png" alt="Circular Village Detection" width="45%">
-  <img src="assets/Necropolis.png" alt="Necropolis Detection" width="45%">
+  <img src="Assets/CircularVillage.png" alt="Circular Village Detection" width="45%">
+  <img src="Assets/Necropolis.png" alt="Necropolis Detection" width="45%">
   <br>
   <em>Fig 1: Detection of circular structures (Villages) and linear clusters (Necropolis).</em>
 </p>
@@ -77,7 +77,7 @@ Comparison between the raw GPR input (raster) and the final vector blueprint gen
 
 | Raw Data (Input) | Final Archeological Plan (Output) |
 |:---:|:---:|
-| ![Basilica Heatmap](assets/BasilicaHeatmap.png) | ![Final Plan](assets/PlanImage.png) |
+| ![Basilica Heatmap](Assets/BasilicaHeatmap.png) | ![Final Plan](Assets/PlanImage.png) |
 | *Noisy 2D Heatmap (Simulated GPR)* | *Clean Vector Map ready for excavation* |
 
 ### 2. The AI in Action (DBSCAN Processing)
@@ -85,7 +85,7 @@ How the algorithm visualizes data in 3D space to separate structural walls from 
 
 | Phase I: Detection (Noisy) | Phase II: Refinement (Clean) |
 |:---:|:---:|
-| ![AI Clustering](assets/Basilica3D_I.png) | ![3D Model](assets/Basilica3D_II.png) |
+| ![AI Clustering](Assets/Basilica3D_I.png) | ![3D Model](Assets/Basilica3D_II.png) |
 | *DBSCAN identifying clusters amidst noise.* | *Final 3D Model after heuristic filtering.* |
 
 ---
