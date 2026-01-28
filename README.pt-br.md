@@ -44,6 +44,12 @@ Este repositório serve como guia de estudos sobre tecnologias que estão revolu
 
 O projeto está dividido em dois módulos progressivos:
 
+### 0. [Chronos Parte 0: O Gerador (Genesis)](Chronos_Arqueologia_Analise_Exploratoria.ipynb)
+A fundação do projeto que foi feita para a Análise de Dados. Antes de analisar, criamos um "Universo Controlado" para validar nossas hipóteses.
+* **Simulação de Estratigrafia:** Algoritmo estocástico que aplica a *Lei da Superposição* (Profundidade $\propto$ Idade).
+* **Injeção de "Ground Truth":** Criação artificial de uma "Tumba Real" (Ouro) oculta no ruído para testar a eficácia dos modelos.
+* **Comparativo de IA:** Demonstração prática das limitações do **K-Means** (geométrico) versus a necessidade do **DBSCAN** (densidade) para arqueologia.
+
 ### 1. [Chronos Parte I: Fundamentos Vetoriais](Chronos_Aqueologia_Parte_I.ipynb)
 Focado na introdução à geometria computacional e detecção de padrões lineares.
 * **Cenários:** Muralha Inca (Senoide) e Aldeia Circular.
