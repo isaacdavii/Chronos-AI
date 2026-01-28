@@ -63,7 +63,7 @@ Focused on the introduction to computational geometry and linear pattern detecti
   <em>Fig 1: Detection of circular structures (Villages) and linear clusters (Necropolis).</em>
 </p>
 
-### 2. [Chronos Part II: Advanced Simulation (Raster)](Notebooks/en/Chronos_Aqueologia_Parte_II.ipynb)
+### 2. [Chronos Part II: Advanced Simulation (Raster)](Notebooks/en/Chronos_Archaeology_Part_II.ipynb)
 Simulation of a real high-resolution geophysical survey (GPR).
 * **Scenario:** A "Subterranean Basilica" hidden in a 4-million-point matrix.
 * **Pipeline:**
