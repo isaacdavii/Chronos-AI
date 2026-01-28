@@ -42,7 +42,13 @@ This repository serves as a study guide on technologies that are revolutionizing
 
 ## 📂 Repository Structure
 
-The project is divided into two progressive modules:
+The project is divided into three progressive modules:
+
+### 0. [Chronos Part 0: The Generator (Genesis)](Notebooks/en/Chronos_Archaeology_Exploration_Analysis.ipynb)
+The project's foundation made for Data Analysis. Before analysis, we engineer a "Controlled Universe" to validate our hypotheses.
+* **Stratigraphy Simulation:** Stochastic algorithm applying the *Law of Superposition* (Depth $\propto$ Age).
+* **"Ground Truth" Injection:** Artificial creation of a "Royal Tomb" (Gold) concealed within noise to validate model efficacy.
+* **AI Benchmarking:** Practical demonstration of **K-Means** limitations (geometric bias) vs. the necessity of **DBSCAN** (density-based) for archaeology.
 
 ### 1. [Chronos Part I: Vector Fundamentals](Notebooks/en/Chronos_Archaeology_Part_I.ipynb)
 Focused on the introduction to computational geometry and linear pattern detection.
