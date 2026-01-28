@@ -42,15 +42,15 @@ Este repositório serve como guia de estudos sobre tecnologias que estão revolu
 
 ## 📂 Estrutura do Repositório
 
-O projeto está dividido em dois módulos progressivos:
+O projeto está dividido em três módulos progressivos:
 
-### 0. [Chronos Parte 0: O Gerador (Genesis)](Chronos_Arqueologia_Analise_Exploratoria.ipynb)
+### 0. [Chronos Parte 0: O Gerador (Genesis)](Notebooks/pt-br/Chronos_Arqueologia_Analise_Exploratoria.ipynb)
 A fundação do projeto que foi feita para a Análise de Dados. Antes de analisar, criamos um "Universo Controlado" para validar nossas hipóteses.
 * **Simulação de Estratigrafia:** Algoritmo estocástico que aplica a *Lei da Superposição* (Profundidade $\propto$ Idade).
 * **Injeção de "Ground Truth":** Criação artificial de uma "Tumba Real" (Ouro) oculta no ruído para testar a eficácia dos modelos.
 * **Comparativo de IA:** Demonstração prática das limitações do **K-Means** (geométrico) versus a necessidade do **DBSCAN** (densidade) para arqueologia.
 
-### 1. [Chronos Parte I: Fundamentos Vetoriais](Chronos_Aqueologia_Parte_I.ipynb)
+### 1. [Chronos Parte I: Fundamentos Vetoriais](Notebooks/pt-br/Chronos_Aqueologia_Parte_I.ipynb)
 Focado na introdução à geometria computacional e detecção de padrões lineares.
 * **Cenários:** Muralha Inca (Senoide) e Aldeia Circular.
 * **Técnica:** Dados vetoriais ($X, Y, Z$).
@@ -63,7 +63,7 @@ Focado na introdução à geometria computacional e detecção de padrões linea
   <em>Fig 1: Detecção de estruturas circulares (Vilas) e clusters lineares (Necrópole).</em>
 </p>
 
-### 2. [Chronos Parte II: Simulação Avançada (Raster)](Chronos_Arqueologia_Parte_II.ipynb)
+### 2. [Chronos Parte II: Simulação Avançada (Raster)](Notebooks/pt-br/Chronos_Arqueologia_Parte_II.ipynb)
 Simulação de uma prospecção geofísica real (GPR) em alta resolução.
 * **Cenário:** Uma "Basílica Subterrânea" oculta em uma matriz de 4 milhões de pontos.
 * **Pipeline:**
