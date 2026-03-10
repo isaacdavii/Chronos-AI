@@ -10,9 +10,9 @@ __pycache__/
 venv/
 env/
 .env
+.venv*
 
 # OS Metadata
 .DS_Store
 Thumbs.db
-.venv*
-__pycache__/
+
