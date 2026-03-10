@@ -37,6 +37,7 @@ This repository serves as a study guide on technologies that are revolutionizing
 * **LIDAR (*Light Detection and Ranging*):** 3D terrain modeling via laser to virtually remove vegetation.
 * **XRF (*X-Ray Fluorescence*):** Chemical analysis of materials via X-rays.
 * **DBSCAN (Main Algorithm):** Spatial density-based clustering to separate "Signal" (Walls) from "Noise" (Loose stones).
+* **Computational Geometry (Open3D):** Transitioning from vector points to 3D **Digital Twins** using Poisson Reconstruction and Convex Hulls (Cubature).
 
 ---
 
@@ -71,6 +72,13 @@ Simulation of a real high-resolution geophysical survey (GPR).
     2.  **Vectorization:** Heatmap to Vector conversion.
     3.  **`ChronosAnalyzer` Class:** Object-oriented architecture for processing.
     4.  **Business Intelligence:** Automatic generation of reports with areas ($m^2$) and excavation coordinates.
+    
+### 3. [Chronos Part III: Volumetric Reconstruction and Metrology](Notebooks/en/Chronos_Archaeology_Part_III.ipynb)
+The leap to industrial-standard engineering. The pipeline goes beyond simply identifying anomalies and moves to reconstruct hermetic 3D solids from chaos.
+* **Stress Test:** Simulation of a hostile prospecting environment with high *backscatter* (15,000 noise points) and a 30% sensor failure rate.
+* **Geometric Engine (Open3D):** Processing of vector fields (Normals) and Poisson Surface Reconstruction with statistical density-based pruning.
+* **Metrology and Auditing:** Volume and mass calculation (tons) for excavation sizing via *Convex Hull*.
+    * Generation of Autonomous Metrological Reports (Bounding Box) and Algorithmic Confidence Heatmaps.
 
 ---
 
@@ -96,34 +104,84 @@ How the algorithm visualizes data in 3D space to separate structural walls from 
 | ![AI Clustering](Assets/Basilica3D_I.png) | ![3D Model](Assets/Basilica3D_II.png) |
 | *DBSCAN identifying clusters amidst noise.* | *Final 3D Model after heuristic filtering.* |
 
+### 3. Reverse Engineering (Digital Twins and Metrology)
+Evolution of the raw point cloud to a solid mesh (*watertight mesh*) exportable to CAD, 3D Printers, and VR Engines, accompanied by a geometric uncertainty audit.
+
+| Surface Reconstruction (Poisson) | Algorithmic Confidence Map |
+|:---:|:---:|
+| ![3D Mesh](Assets/MeshReconstrution.png) | ![Confidence Heatmap](Assets/ConfidenceHeatmap_en.png) |
+| *Digital Twin generated from low SNR radar.* | *Yellow areas indicate high precision; purple indicates AI interpolation.* |
+
 ---
 
 ## 🎮 Interactive Web App (Deployment)
 
-To bridge the gap between code and field operations, Chronos includes a production-ready dashboard built with **Streamlit**. This tool allows archaeologists to interact with the algorithm without writing a single line of Python.
+To connect the code to field operations, Chronos includes a production-ready dashboard built with **Streamlit**. This tool allows professionals (archaeologists, geologists, and engineers) to interact with the Artificial Intelligence algorithms without writing a single line of Python.
 
-![Dashboard Preview](Assets/Dashboard_Demo_en.png)
+The evolution of the project's architecture has divided the interface into two main operational fronts:
 
-### Key Features:
-* **Real-time Tuning:** Adjust `Epsilon` and `Density` sliders to see immediate changes in the 3D model.
-* **Heuristic Filter:** Control the post-processing threshold to clean debris dynamically.
-* **Export:** Download the processed vector data (`.csv`) directly from the browser.
+### 📍 Macro-Prospecting (GPR and Raster)
+Focused on analyzing vast extensions of terrain, mapping anomalies, and generating floor plans to guide excavation.
 
-### 🚀 How to Run the App
-To launch the dashboard locally:
+![Old Dashboard Preview](Assets/Dashboard_Demo_en.png)
+* **Real-Time Tuning:** Control of `Epsilon` and `Density` to calibrate the DBSCAN algorithm.
+* **Heuristic Filter:** Dynamic cleaning of debris and geological noise.
+* **Vector Export:** Download processed coordinates (`.csv`) for insertion into topography software.
 
-1.  Install Streamlit:
-    ```bash
-    pip install streamlit
-    ```
-2.  Run the application (Choose your language):
-    ```bash
-    # For English Version
-    streamlit run app/app_en.py
-    
-    # Para Versão em Português
-    streamlit run app/app_pt.py
-    ```
+### 🧊 Micro-Excavation and Digital Twins (V2 Update)
+The major system update. Integrating the **Open3D** geometric engine, the application now supports heavy three-dimensional topology processing directly via the browser.
+
+![Current Dashboard Preview](Assets/Dashboard_en.png)
+* **Industrial Ingestion (LIDAR):** Native *drag-and-drop* support for massive laser scan files (`.las`, `.laz`) or structured synthetic data.
+* **Memory Optimization:** Executes automatic *Voxel Downsampling* to compress spatial *Big Data* and protect server RAM.
+* **Real-Time Reconstruction:** Applies Statistical Outlier Removal (SOR) filters and **Poisson Surface Reconstruction** to transform radar dust into solid surfaces.
+* **Digital Curation:** Allows immediate download of the rescued structure in the universal `.obj` format, ready for 3D printing, Blender, or Virtual Reality (VR) Engines.
+
+---
+
+### 🚀 How to Run the App (Local Environment)
+
+> ⚠️ **Compatibility Warning:** The geometric engine `Open3D` (used in 3D rendering) requires **Python 3.11** or lower, currently lacking native support for version 3.13. To avoid conflicts, it is strictly recommended to run the application isolated in a virtual environment.
+
+> Follow the step-by-step below to start the dashboard on your machine. 
+
+> *The instructions are also in the app.py file*
+
+**0. Install Streamlit:**
+```bash
+pip install streamlit
+```
+
+**1. Create and Activate a Virtual Environment (Python 3.11)**
+
+*For Windows users:*
+```bash
+py -3.11 -m venv .venv311
+.\.venv311\Scripts\activate
+```
+*For Linux/Mac users:*
+```bash
+py -3.11 -m venv .venv311
+source .venv311/bin/activate
+```
+**2. Install Project Dependencies**
+
+With the isolated environment active (you will see `(.venv311)` in your terminal), install the necessary libraries:
+```bash
+pip install -r requirements.txt
+```
+
+**3. Run the Dashboard**
+```bash
+streamlit run app/app_pt.py
+```
+
+**4. End the Session**
+
+After closing the browser and stopping the server in the terminal (`Ctrl + C`), deactivate the virtual environment to return to your system's global Python:
+```bash
+deactivate
+```
 
 ---
 
@@ -132,8 +190,18 @@ To launch the dashboard locally:
 This project was developed to run on **Google Colab** or **Jupyter Notebook**.
 
 ### Prerequisites
+#### Core and Visual Dependencies
 ```bash
 pip install pandas numpy scikit-learn plotly folium matplotlib
+```
+#### Geometry and LIDAR Ingestion Dependencies
+```bash
+pip install open3d scipy alphashape laspy[lazrs] streamlit
+```
+
+#### Or you can install all dependencies manually via the `requirements.txt` file:
+```bash
+pip install -r requirements.txt
 ```
 
 ---
