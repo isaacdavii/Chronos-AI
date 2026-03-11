@@ -143,7 +143,7 @@ if modulo == "1️⃣ Prospecção de Terreno (DBSCAN)":
                     height = 600,
                 )
                 fig_3d.update_traces(marker = dict(size = 3))
-                st.plotly_chart(fig_3d, use_container_width = True)
+                st.plotly_chart(fig_3d, width = 'stretch')
             with tab2:
                 df_mapa = df[df["cluster_filtrado"] != -1]
                 if not df_mapa.empty:
@@ -155,7 +155,7 @@ if modulo == "1️⃣ Prospecção de Terreno (DBSCAN)":
                         height = 600
                     )
                     fig_2d.update_yaxes(scaleanchor = "x", scaleratio = 1)
-                    st.plotly_chart(fig_2d, use_container_width = True)
+                    st.plotly_chart(fig_2d, width = 'stretch')
                     
             st.markdown("---")
             st.subheader("💾 Exportação de Dados")
@@ -370,7 +370,7 @@ elif modulo == "2️⃣ Reconstrução de Artefatos (Open3D)":
                 height = 600,
                 margin = dict(l = 0, r = 0, b = 0, t = 0),
             )
-            st.plotly_chart(fig_mesh, use_container_width = True)
+            st.plotly_chart(fig_mesh, width = 'stretch')
 
         with tabB:
             # Gráfico comparativo Antes/Depois
@@ -403,7 +403,7 @@ elif modulo == "2️⃣ Reconstrução de Artefatos (Open3D)":
                 height = 600,
                 margin = dict(l = 0, r = 0, b = 0, t = 0),
             )
-            st.plotly_chart(fig_pts, use_container_width = True)
+            st.plotly_chart(fig_pts, width = 'stretch')
         
         # Exportação de Dados
         st.markdown("---")
