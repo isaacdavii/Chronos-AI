@@ -109,7 +109,7 @@ Evolution of the raw point cloud to a solid mesh (*watertight mesh*) exportable 
 
 | Surface Reconstruction (Poisson) | Algorithmic Confidence Map |
 |:---:|:---:|
-| ![3D Mesh](Assets/MeshReconstrution.png) | ![Confidence Heatmap](Assets/ConfidenceHeatmap_en.png) |
+| ![3D Mesh](Assets/MeshReconstruction.png) | ![Confidence Heatmap](Assets/ConfidenceHeatmap_en.png) |
 | *Digital Twin generated from low SNR radar.* | *Yellow areas indicate high precision; purple indicates AI interpolation.* |
 
 ---
