@@ -32,7 +32,7 @@ O projeto pergunta: **como mapear o sagrado sem tocá-lo?**
 * **Arqueologia não-invasiva:** processar sinais de radar para enxergar através do mármore.
 * **Preservação:** identificar vazios e estruturas sem escavação destrutiva.
 
-> 📌 **Uma precisão necessária:** a necrópole sob São Pedro — os [*Scavi*][https://visite.basilicasanpietro.va/en/booking/necropolivaticana] — foi escavada entre 1940 e 1949 e é extensamente publicada. É um **precedente**, não uma fronteira inexplorada. O *monitoramento* não-invasivo de um sítio conhecido e frágil é um caso de uso real: sítios escavados precisam ser monitorados contra subsidência e degradação estrutural.
+> 📌 **Uma precisão necessária:** a necrópole sob São Pedro — os [*Scavi*](https://visite.basilicasanpietro.va/en/booking/necropolivaticana) — foi escavada entre 1940 e 1949 e é extensamente publicada. É um **precedente**, não uma fronteira inexplorada. O *monitoramento* não-invasivo de um sítio conhecido e frágil é um caso de uso real: sítios escavados precisam ser monitorados contra subsidência e degradação estrutural.
 
 ---
 
@@ -213,7 +213,7 @@ python -m ipykernel install --user --name chronos --display-name "Python 3.12 (C
 ### Rodando o dashboard
 
 ```bash
-streamlit run App/app_pt.py     # ou App/app_en.py
+streamlit run app/app_pt.py     # ou app/app_en.py
 ```
 
 ---

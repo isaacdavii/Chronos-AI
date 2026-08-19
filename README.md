@@ -33,7 +33,7 @@ The project asks: **how do you map the sacred without touching it?**
 * **Non-invasive archaeology:** processing radar signals to see through marble.
 * **Preservation:** identifying voids and structures without destructive excavation.
 
-> 📌 **A point of precision:** the necropolis under St. Peter's — the [*Scavi*][https://visite.basilicasanpietro.va/en/booking/necropolivaticana] — was excavated between 1940 and 1949 and is extensively published. It is a **precedent**, not an unexplored frontier. Non-invasive *monitoring* of a known, fragile site is a real use case: excavated sites need monitoring against subsidence and structural degradation.
+> 📌 **A point of precision:** the necropolis under St. Peter's — the [*Scavi*](https://visite.basilicasanpietro.va/en/booking/necropolivaticana) — was excavated between 1940 and 1949 and is extensively published. It is a **precedent**, not an unexplored frontier. Non-invasive *monitoring* of a known, fragile site is a real use case: excavated sites need monitoring against subsidence and structural degradation.
 
 ---
 
@@ -213,7 +213,7 @@ python -m ipykernel install --user --name chronos --display-name "Python 3.12 (C
 ### Running the dashboard
 
 ```bash
-streamlit run App/app_en.py     # or App/app_pt.py
+streamlit run app/app_en.py     # or app/app_pt.py
 ```
 
 ---
