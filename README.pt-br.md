@@ -2,224 +2,312 @@
 
 ---
 
-# 🏛️ Chronos: Sistema de Detecção Arqueológica via IA
+# 🏛️ Chronos: Sistema de Detecção Arqueológica por IA
 
-![Python](https://img.shields.io/badge/Python-3.8%2B-blue)
-![Machine Learning](https://img.shields.io/badge/AI-Unsupervised-orange)
+![Python](https://img.shields.io/badge/Python-3.10--3.12-blue)
+![Machine Learning](https://img.shields.io/badge/IA-N%C3%A3o%20Supervisionada-orange)
+![Version](https://img.shields.io/badge/vers%C3%A3o-2.1-green)
 [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://chronos-ai-archeology.streamlit.app/)
 
-> **🔴 Demo Online:** Clique no selo "Streamlit" acima ou [acesse o dashboard aqui](https://chronos-ai-archeology.streamlit.app/) para interagir com o modelo 2D e 3D em tempo real.
+> **🔴 Demo ao vivo:** clique no selo "Streamlit" acima ou [acesse o dashboard aqui](https://chronos-ai-archeology.streamlit.app/) para interagir com o modelo 2D e 3D em tempo real.
 
-> **"A tecnologia não reinventa o passado, mas nos dá novas lentes para enxergá-lo."**
+> **"A tecnologia não reinventa o passado, mas nos dá novas lentes para vê-lo."**
 
 ## 📖 Sobre o Projeto
 
-O **Chronos** é um sistema de Inteligência Artificial focado em **Arqueologia Computacional**. O projeto utiliza algoritmos de Machine Learning Não Supervisionado (**DBSCAN**) para identificar padrões estruturais (muralhas, fundações, necrópoles) ocultos em dados geofísicos ruidosos.
+**Chronos** é um sistema de Inteligência Artificial voltado à **Arqueologia Computacional**. O projeto usa aprendizado de máquina não supervisionado (**DBSCAN**) para identificar padrões estruturais — muros, fundações, necrópoles — escondidos dentro de dados geofísicos ruidosos.
 
-O objetivo é simular o processamento de dados reais de campo — como **GPR** (Radar de Penetração no Solo) e **LIDAR** — automatizando a detecção de sítios arqueológicos e gerando relatórios de escavação precisos.
+O objetivo é simular o processamento de dados reais de campo, como **GPR** (radar de penetração no solo) e **LIDAR**, automatizando a detecção de feições arqueológicas e gerando relatórios de escavação.
+
+> ⚠️ **Todos os dados deste repositório são sintéticos.** Cada resultado abaixo é medido contra um ground truth que o simulador gerou por construção. Isso torna as métricas confiáveis como medida do *comportamento do algoritmo*, e **não** como medida de desempenho em campo. A validação em dado real de levantamento é o próximo marco (v3.0), e a distinção é mantida explícita até lá.
 
 ---
 
 ## 🇻🇦 Motivação: O Desafio do Vaticano
 
-Uma das grandes inspirações para o desenvolvimento do *Chronos* foi a complexidade arqueológica enfrentada por instituições como o Vaticano. A **Basílica de São Pedro** assenta-se sobre milênios de história estratificada, onde escavações físicas são arriscadas ou impossíveis.
+Uma das inspirações do *Chronos* foi a complexidade arqueológica enfrentada por instituições como o Vaticano. A **Basílica de São Pedro** repousa sobre milênios de história estratificada, onde escavações físicas são arriscadas ou impossíveis.
 
-O projeto busca responder: **Como mapear o sagrado sem tocá-lo?**
-* **Arqueologia Não-Invasiva:** Processamento de sinais de radar para ver através do mármore.
-* **Preservação:** Identificação de vazios e estruturas sem a necessidade de escavação destrutiva.
+O projeto pergunta: **como mapear o sagrado sem tocá-lo?**
+
+* **Arqueologia não-invasiva:** processar sinais de radar para enxergar através do mármore.
+* **Preservação:** identificar vazios e estruturas sem escavação destrutiva.
+
+> 📌 **Uma precisão necessária:** a necrópole sob São Pedro — os [*Scavi*][https://visite.basilicasanpietro.va/en/booking/necropolivaticana] — foi escavada entre 1940 e 1949 e é extensamente publicada. É um **precedente**, não uma fronteira inexplorada. O *monitoramento* não-invasivo de um sítio conhecido e frágil é um caso de uso real: sítios escavados precisam ser monitorados contra subsidência e degradação estrutural.
 
 ---
 
 ## 🛠️ Tecnologias e Inspirações
 
-Este repositório serve como guia de estudos sobre tecnologias que estão revolucionando a história (inspirado pelo canal *Estranha História*, do Prof. Dr. Henrique Caldeira):
+Este repositório serve também como guia de estudo sobre tecnologias que estão mudando como lemos a história (inspirado pelo canal [*Estranha História*](https://www.youtube.com/@henriquecaldeira), do Prof. Dr. Henrique Caldeira):
 
-* **LIDAR (*Light Detection and Ranging*):** Modelagem 3D de terreno via laser para remover vegetação virtualmente.
-* **XRF (*X-Ray Fluorescence*):** Análise química de materiais via raios-x.
-* **DBSCAN (Algoritmo Principal):** Clusterização baseada em densidade espacial para separar "Sinal" (Muros) de "Ruído" (Pedras soltas).
-* **Geometria Computacional (Open3D):** Transição de pontos vetoriais para **Gêmeos Digitais** tridimensionais utilizando Reconstrução de Poisson e Fechos Convexos (Cubagem).
+* **LIDAR (*Light Detection and Ranging*):** modelagem 3D do terreno via laser, para remover a vegetação virtualmente.
+* **XRF (*Fluorescência de Raios-X*):** análise química de materiais via raios-X. Note que o **GPR não faz isso** — ele mede contraste dielétrico, não composição. Qualquer atribuição de material neste pipeline é uma hipótese que aguarda XRF ou análise direta.
+* **DBSCAN:** agrupamento espacial por densidade, separando sinal (muros) de ruído (pedras soltas).
+* **Geometria computacional (Open3D):** de pontos vetoriais a gêmeos digitais 3D via reconstrução de Poisson e fechos convexos.
 
 ---
 
 ## 📂 Estrutura do Repositório
 
-O projeto está dividido em três módulos progressivos:
+```
+Chronos-AI/
+├── notebooks/
+│   ├── en/          Chronos_Archaeology_{Exploration_Analysis, Part_I, Part_II, Part_III}.ipynb
+│   └── pt-br/       Chronos_Arqueologia_{Analise_Exploratoria, Parte_I, Parte_II, Parte_III}.ipynb
+├── app/             app_pt.py, app_en.py, chronos_core.py
+├── data/            conjuntos sintéticos (.csv, .las)
+├── assets/          imagens e gráficos
+├── docs/            LICENSE-COMMERCIAL.pt-br.md
+├── requirements.txt / requirements-dev.txt
+└── README.md / README.pt-br.md / LICENSE
+```
 
-### 0. [Chronos Parte 0: O Gerador (Genesis)](Notebooks/pt-br/Chronos_Arqueologia_Analise_Exploratoria.ipynb)
-A fundação do projeto que foi feita para a Análise de Dados. Antes de analisar, criamos um "Universo Controlado" para validar nossas hipóteses.
-* **Simulação de Estratigrafia:** Algoritmo estocástico que aplica a *Lei da Superposição* (Profundidade $\propto$ Idade).
-* **Injeção de "Ground Truth":** Criação artificial de uma "Tumba Real" (Ouro) oculta no ruído para testar a eficácia dos modelos.
-* **Comparativo de IA:** Demonstração prática das limitações do **K-Means** (geométrico) versus a necessidade do **DBSCAN** (densidade) para arqueologia.
+### 0. [Parte 0: O Gerador (Gênese)](notebooks/pt-br/Chronos_Arqueologia_Analise_Exploratoria.ipynb)
+A base. Antes de qualquer análise, construímos um universo controlado contra o qual validar hipóteses.
+* **Simulação de estratigrafia:** algoritmo estocástico aplicando a *Lei da Superposição* (profundidade ∝ idade).
+* **Injeção de ground truth:** uma "Tumba Real" escondida no ruído, para que a eficácia do modelo possa ser *medida* em vez de afirmada.
+* **Benchmark de IA:** demonstração das limitações do **K-Means** (viés geométrico) contra a necessidade do **DBSCAN** (por densidade).
 
-### 1. [Chronos Parte I: Fundamentos Vetoriais](Notebooks/pt-br/Chronos_Aqueologia_Parte_I.ipynb)
-Focado na introdução à geometria computacional e detecção de padrões lineares.
-* **Cenários:** Muralha Inca (Senoide) e Aldeia Circular.
-* **Técnica:** Dados vetoriais ($X, Y, Z$).
-* **Visualização:** Gráficos de dispersão e Mapas Folium.
+### 1. [Parte I: Fundamentos Vetoriais](notebooks/pt-br/Chronos_Aqueologia_Parte_I.ipynb)
+Geometria computacional e detecção de padrões lineares.
+* **Cenários:** muralha inca (senoide), aldeia circular, necrópole.
+* **Técnica:** dados vetoriais (X, Y, Z), os três eixos em metros.
+* **Visualização:** dispersão e mapas Folium, com georreferenciamento corrigido por latitude.
+
 **📸 Galeria da Parte I:**
 <p align="center">
-  <img src="Assets/CircularVillage.png" alt="Detecção de Vila Circular" width="45%">
-  <img src="Assets/Necropolis.png" alt="Detecção de Necrópole" width="45%">
+  <img src="assets/CircularVillage.png" alt="Detecção de Aldeia Circular" width="45%">
+  <img src="assets/Necropolis.png" alt="Detecção de Necrópole" width="45%">
   <br>
-  <em>Fig 1: Detecção de estruturas circulares (Vilas) e clusters lineares (Necrópole).</em>
+  <em>Fig 1: Detecção de estruturas circulares (aldeias) e clusters lineares (necrópole).</em>
 </p>
 
-### 2. [Chronos Parte II: Simulação Avançada (Raster)](Notebooks/pt-br/Chronos_Arqueologia_Parte_II.ipynb)
-Simulação de uma prospecção geofísica real (GPR) em alta resolução.
-* **Cenário:** Uma "Basílica Subterrânea" oculta em uma matriz de 4 milhões de pontos.
+### 2. [Parte II: Simulação Avançada (Raster)](notebooks/pt-br/Chronos_Arqueologia_Parte_II.ipynb)
+Simulação de um levantamento geofísico de alta resolução.
+* **Cenário:** uma basílica subterrânea escondida numa matriz de 2000 × 2000 pixels — **500 m × 500 m de terreno** na escala declarada de 0,25 m/pixel.
 * **Pipeline:**
-    1.  **Ingestão Raster:** Tratamento de imagem e histogramas de sinal.
-    2.  **Vetorização:** Conversão de Heatmap para Vetores.
-    3.  **Classe `ChronosAnalyzer`:** Arquitetura orientada a objetos para processamento.
-    4.  **Business Intelligence:** Geração automática de relatórios com áreas ($m^2$) e coordenadas de escavação.
+    1. **Ingestão raster:** processamento de imagem e histogramas de sinal.
+    2. **Limiarização:** Otsu e μ+3σ, pontuados contra a máscara de verdade.
+    3. **Vetorização:** conversão de mapa de calor para vetor.
+    4. **`ChronosAnalyzer`:** agrupamento *apenas no espaço* — a intensidade do radar é usada como peso, nunca como coordenada.
+    5. **Relatório:** áreas em m², footprint real ao lado da bounding box, e coordenadas de escavação.
 
-### 3. [Chronos Parte III: Reconstrução Volumétrica e Metrologia](Notebooks/pt-br/Chronos_Arqueologia_Parte_III.ipynb)
-O salto para a engenharia de padrão industrial. O pipeline deixa de apenas identificar anomalias e passa a reconstruir sólidos 3D herméticos a partir do caos.
-* **Teste de Estresse (Stress Test):** Simulação de um ambiente de prospecção hostil com alto *backscatter* (15.000 pontos de ruído) e 30% de falha de sensor.
-* **Motor Geométrico (Open3D):** Processamento de campos vetoriais (Normais) e Reconstrução de Superfície de Poisson com poda baseada em densidade estatística.
-* **Metrologia e Auditoria:** Cálculo de volume e massa (toneladas) para dimensionamento de escavação via *Convex Hull*.
-    * Geração de Laudo Metrológico Autônomo (Bounding Box) e Mapas de Calor (Heatmaps) de Confiança Algorítmica.
+### 3. [Parte III: Reconstrução Volumétrica e Metrologia](notebooks/pt-br/Chronos_Arqueologia_Parte_III.ipynb)
+O salto para engenharia volumétrica.
+* **Stress test:** ambiente hostil de prospecção com **25.000 pontos de ruído** e 30% de taxa de falha do sensor.
+* **Motor geométrico (Open3D):** estimativa de normais com raio derivado da nuvem, orientação para fora verificada contra o centroide, e reconstrução de superfície de Poisson com poda estatística por densidade.
+* **Metrologia e auditoria:** quatro grandezas distintas reportadas separadamente — envelope AABB, fecho convexo, e volume real *quando a malha é fechada* — mais uma tabela de cenários de massa e um mapa de confiança algorítmica.
+
+---
+
+## 🔄 Novidades da v2.1
+
+A v2.1 é uma versão de rigor. O pipeline agora **mede** a própria saída em cada
+etapa em vez de descrevê-la, e a escala física de cada resultado é declarada e
+carregada até o relatório.
+
+**Avaliação em toda parte.** O simulador gera ground truth por construção —
+sabemos quais pixels são parede e quais pontos são sinal. Cada etapa agora se
+pontua contra isso: precisão, recall, IoU, especificidade.
+
+**Unidades declaradas.** Uma malha de levantamento é medida em pixels; metros é o
+que se obtém depois de multiplicar por uma escala declarada. O `PIXEL_SIZE_M`
+agora é explícito e propagado até o relatório de escavação.
+
+**Estatística no lugar do olhômetro.** O limiar de detecção é escolhido por Otsu
+ou μ+3σ e pontuado, não fixado à mão. O raio do DBSCAN pode ser sugerido pelo
+joelho da k-distância. O georreferenciamento é corrigido por latitude.
+
+**Afirmações verificadas.** A topologia da malha é checada com `is_watertight()`
+antes de qualquer coisa ser dita sobre ela. A volumetria reporta quatro grandezas
+distintas — envelope AABB, caixa orientada, fecho convexo e volume real — em vez
+de colapsá-las num número só. A massa é uma tabela de cenários com seis
+materiais, com os limites do instrumento declarados: o GPR mede contraste
+dielétrico, não composição.
+
+**Uma etapa de detecção antes da reconstrução.** O SOR é um filtro de
+uniformidade de densidade, não um detector, então o DBSCAN agora roda entre o
+filtro e o Poisson.
 
 ---
 
 ## 📊 Resultados Visuais
 
-> **Nota:** O GitHub exibe apenas imagens estáticas abaixo. Para interagir com os gráficos 3D (rotacionar/zoom), por favor abra os notebooks no **Google Colab**.
+> **Nota:** o GitHub renderiza as imagens estáticas abaixo. Para interagir com os gráficos 3D, abra os notebooks no **Google Colab** — o renderer agora é detectado em tempo de execução, então eles vão de fato aparecer.
 
-O sistema transforma dados geofísicos brutos em plantas de engenharia acionáveis:
+### 1. Do Sinal ao Mapa
 
-### 1. Do Sinal ao Mapa (O Pipeline de Engenharia)
-Comparação entre a entrada bruta de GPR (raster) e a planta vetorial final gerada pelo Chronos.
-
-| Dados Brutos (Entrada) | Planta Arqueológica Final (Saída) |
+| Dado Bruto (Entrada) | Planta Arqueológica Final (Saída) |
 |:---:|:---:|
-| ![Heatmap da Basílica](Assets/BasilicaHeatmap.png) | ![Planta Final](Assets/PlanImage.png) |
-| *Mapa de Calor 2D Ruidoso (GPR Simulado)* | *Mapa Vetorial Limpo pronto para escavação* |
+| ![Mapa de Calor da Basílica](assets/BasilicaHeatmap.png) | ![Planta Final](assets/PlanImage.png) |
+| *Mapa de calor 2D ruidoso (GPR simulado)* | *Mapa vetorial limpo, pronto para escavação* |
 
 ### 2. A IA em Ação (Processamento DBSCAN)
-Como o algoritmo visualiza os dados no espaço 3D para separar paredes estruturais de ruído geológico.
 
-| Fase I: Detecção (Ruidoso) | Fase II: Refinamento (Limpo) |
+| Fase I: Detecção (Ruidosa) | Fase II: Refinamento (Limpa) |
 |:---:|:---:|
-| ![Clusterização IA](Assets/Basilica3D_I.png) | ![Modelo 3D](Assets/Basilica3D_II.png) |
-| *DBSCAN identificando clusters em meio ao ruído.* | *Modelo 3D Final após filtragem heurística.* |
+| ![Clustering da IA](assets/Basilica3D_I.png) | ![Modelo 3D](assets/Basilica3D_II.png) |
+| *DBSCAN identificando clusters em meio ao ruído.* | *Modelo 3D final após filtragem heurística.* |
 
-### 3. A Engenharia Reversa (Gêmeos Digitais e Metrologia)
-Evolução da nuvem de pontos bruta para uma malha sólida (*watertight mesh*) exportável para CAD, Impressoras 3D e Motores VR, acompanhada de auditoria de incerteza geométrica.
+### 3. Engenharia Reversa (Gêmeos Digitais e Metrologia)
 
 | Reconstrução de Superfície (Poisson) | Mapa de Confiança Algorítmica |
 |:---:|:---:|
-| ![Malha 3D](Assets/ReconstrucaoMalha.png) | ![Heatmap de Confiança](Assets/ConfidenceHeatmap_pt.png) |
-| *Gêmeo Digital gerado a partir de radar com baixo SNR.* | *Áreas em amarelo indicam alta precisão; roxo indica interpolação da IA.* |
+| ![Malha 3D](assets/MeshReconstruction.png) | ![Mapa de Confiança](assets/ConfidenceHeatmap_pt.png) |
+| *Malha de superfície a partir de radar com baixa SNR.* | *Amarelo indica forte suporte de dado; roxo indica interpolação de Poisson.* |
+
+> ⚠️ **Estas figuras são anteriores ao pipeline atual e serão regeradas no futuro.** Foram produzidas antes de a etapa de detecção ser acrescentada, então a malha está mais próxima do envelope de Poisson da nuvem de pontos do que do artefato em si. Também, o **mapa de confiança mede suporte de reconstrução, não certeza de detecção** — para confiança de detecção, estabilidade por bootstrap é a ferramenta certa que usaremos para tal.
 
 ---
 
-## 🎮 Web App Interativo (Deploy)
+## 🎮 Aplicação Web Interativa
 
-Para conectar o código à operação de campo, o Chronos inclui um dashboard pronto para produção construído com **Streamlit**. Esta ferramenta permite que profissionais (arqueólogos, geólogos e engenheiros) interajam com os algoritmos de Inteligência Artificial sem precisar escrever uma única linha de Python.
+O Chronos inclui um dashboard em **Streamlit**, para que arqueólogos, geólogos e engenheiros usem os algoritmos sem escrever Python.
 
-A evolução da arquitetura do projeto dividiu a interface em duas frentes de operação:
+### 📍 Macro-prospecção (GPR e Raster)
 
-### 📍 Macro-Prospecção (GPR e Raster)
-Focado na análise de vastas extensões de terreno, mapeando anomalias e gerando plantas baixas para guiar a escavação.
+![Preview do Dashboard Antigo](assets/Dashboard_Demo_pt.png)
+* **Ajuste em tempo real:** controle de `Epsilon` e `Densidade` para o DBSCAN, com sugestão pelo joelho da k-distância.
+* **Filtro heurístico:** limpeza dinâmica de detritos e ruído geológico.
+* **Exportação vetorial:** download das coordenadas processadas (`.csv`) para software de topografia.
 
-![Preview do Dashboard Antigo](Assets/Dashboard_Demo_pt.png)
-* **Ajuste em Tempo Real:** Controle de `Epsilon` e `Densidade` para calibração do algoritmo DBSCAN.
-* **Filtro Heurístico:** Limpeza dinâmica de detritos e ruídos geológicos.
-* **Exportação Vetorial:** Download das coordenadas processadas (`.csv`) para inserção em softwares de topografia.
+### 🧊 Micro-escavação e Gêmeos Digitais
 
-### 🧊 Micro-Escavação e Gêmeos Digitais (Update V2)
-A grande atualização do sistema. Integrando o motor geométrico do **Open3D**, o aplicativo agora suporta processamento de topologia tridimensional pesada diretamente pelo navegador.
-
-![Preview do Dashboard Atual](Assets/Dashboard_pt.png)
-* **Ingestão Industrial (LIDAR):** Suporte nativo *drag-and-drop* para arquivos massivos de varredura a laser (`.las`, `.laz`) ou dados sintéticos estruturados.
-* **Otimização de Memória:** Executa *Voxel Downsampling* automático para comprimir *Big Data* espacial e proteger a RAM do servidor.
-* **Reconstrução em Tempo Real:** Aplica Filtros Estatísticos (SOR) e a **Reconstrução de Superfície de Poisson** para transformar poeira de radar em superfícies sólidas.
-* **Curadoria Digital:** Permite o download imediato da estrutura resgatada no formato universal `.obj`, pronto para impressão 3D, Blender ou Motores de Realidade Virtual (VR).
-
----
-
-### 🚀 Como Rodar o App (Ambiente Local)
-
-> ⚠️ **Aviso de Compatibilidade:** O motor geométrico `Open3D` (utilizado na renderização 3D) requer o **Python 3.11** ou inferior, não possuindo suporte nativo para a versão 3.13 no momento. Para evitar conflitos, é estritamente recomendado rodar o aplicativo isolado em um ambiente virtual.
-
-> Siga o passo a passo abaixo para iniciar o dashboard na sua máquina. 
-
-> *As instruções também estão no arquivo app.py*
-
-**0.  Instale o Streamlit:**
-```bash
-pip install streamlit
-```
-
-**1. Crie e ative um Ambiente Virtual (Python 3.11)**
-
-*Para usuários de Windows:*
-```bash
-py -3.11 -m venv .venv311
-.\.venv311\Scripts\activate
-```
-*Para usuários de Linux/Mac:*
-```bash
-py -3.11 -m venv .venv311
-source .venv311/bin/activate
-```
-**2. Instale as Dependências do Projeto**
-
-Com o ambiente isolado ativo (você verá `(.venv311)` no seu terminal), instale as bibliotecas necessárias:
-```bash
-pip install -r requirements.txt
-```
-
-**3. Execute o Dashboard**
-```bash
-streamlit run app/app_pt.py
-```
-
-**4. Encerre a Sessão**
-
-Após fechar o navegador e parar o servidor no terminal (`Ctrl + C`), desative o ambiente virtual para retornar ao Python global do seu sistema:
-```bash
-deactivate
-```
+![Preview do Dashboard Atual](assets/Dashboard_pt.png)
+* **Ingestão industrial (LIDAR):** *drag-and-drop* de `.las` / `.laz`, com as coordenadas centralizadas na carga para que valores UTM não degradem o octree do Poisson.
+* **Downsampling adaptativo:** tamanho de voxel derivado da extensão da cena em vez de fixo no código.
+* **Reconstrução:** SOR → detecção DBSCAN → Poisson, com a topologia verificada antes de qualquer afirmação ser impressa.
+* **Exportação:** `.ply` (preserva cor de vértice, então o mapa de confiança sobrevive) e `.obj` (CAD, impressão 3D, VR).
 
 ---
 
 ## 🚀 Como Executar
 
-Este projeto foi desenvolvido para rodar no **Google Colab** ou **Jupyter Notebook**.
+### ⚠️ Versão do Python — leia isto primeiro
 
-### Pré-requisitos
-#### Dependências Core e Visuais
-```bash
-pip install pandas numpy scikit-learn plotly folium matplotlib
-```
-#### Dependências de Geometria e Ingestão LIDAR
-```bash
-pip install open3d scipy alphashape laspy[lazrs] streamlit
-```
+**O Open3D 0.19 publica wheels apenas para cp38–cp312. Não existe wheel cp313.** No Python 3.13 os módulos 3D simplesmente não instalam, e a Parte III falha com `ModuleNotFoundError: No module named 'open3d'`.
 
-#### Ou você pode instalar as todas dependências manualmente através do arquivo `requirements.txt`:
+**Use Python 3.10, 3.11 ou 3.12.**
+
 ```bash
+# Linux / macOS
+python3.12 -m venv .venv
+source .venv/bin/activate
+
+# Windows
+py -3.12 -m venv .venv
+.\.venv\Scripts\activate
+
 pip install -r requirements.txt
 ```
+
+Depois aponte o Jupyter para esse ambiente:
+
+```bash
+pip install ipykernel
+python -m ipykernel install --user --name chronos --display-name "Python 3.12 (Chronos)"
+```
+
+…e selecione **Python 3.12 (Chronos)** como kernel. Rodar os notebooks contra um kernel 3.13 do sistema é, de longe, a origem mais comum de erros.
+
+### Rodando o dashboard
+
+```bash
+streamlit run App/app_pt.py     # ou App/app_en.py
+```
+
+---
+
+## 🗺️ Roadmap (v3.0)
+
+1. **Visualização de relevo sobre LiDAR real** — Sky-View Factor (Zakšek et al. 2011), Local Relief Model (Hesse 2010), Openness (Doneus 2013), via o toolbox RVT. E LiDAR nacional aberto (AHN, Environment Agency do Reino Unido) torna isso imediatamente testável.
+2. **GPR fisicamente realista** — gprMax (Warren et al. 2016) para modelagem direta por FDTD, mais a cadeia de processamento padrão, da qual a **migração** é a etapa que colapsa hipérboles em pontos.
+3. **Deep learning, com enquadramento honesto** — U-Net sobre rasters de MDT, seguindo Verschoof-van der Vaart & Lambers (2019). 2D, com dado aberto rotulado — não PointNet sobre ânforas sintéticas.
+
+---
+
+## O que o Chronos **não** faz
+
+Nossos limites:
+
+- **Não identifica materiais.** GPR mede contraste dielétrico. Qualquer atribuição de material (cerâmica, bronze, pedra) é hipótese do operador e exige XRF, XRD ou análise direta para confirmar. A tabela de cenários de massa existe para tornar isso explícito.
+- **Não data nada.** Não há relação entre a resposta geofísica e a cronologia.
+- **Não substitui prospecção física.** Toda anomalia é uma hipótese até que uma sondagem a confirme ou refute.
+- **Não é validado em campo.** Até a v3.0, todos os resultados são sobre dado sintético, onde o ground truth é conhecido por construção. Isso torna as métricas confiáveis como medida de *comportamento do algoritmo*, e não como medida de desempenho em campo. Essa validação depende de dado real — está no roadmap, e a distinção deve ser mantida explícita até lá.
+
+Gostaria de destacar que esse é um projeto totalmente acadêmico, e que o uso de dados arqueológicos reais requer **autorização legal**.
+
+Além disso, o projeto visa o desenvolvimento pessoal, aprendizado e exploração ferramentas técnicas de arqueologia computacional com IA.
 
 ---
 
 ## 👨‍💻 Autor
 
-**Isaac Davi** *Desenvolvedor*
+**Isaac Davi** — *Desenvolvedor*
 
-Construído como um projeto de portfólio explorando a interseção entre **História** e **Tecnologia**.  
-Sinta-se à vontade para entrar em contato para colaborações ou dúvidas.
+Construído como projeto de portfólio explorando a interseção entre **história** e **tecnologia**. Fique à vontade para entrar em contato para colaborações ou dúvidas.
+
+---
+
+## 📚 Referências
+
+### Algoritmos neste projeto
+
+* Ester, M., Kriegel, H.-P., Sander, J. & Xu, X. (1996). A Density-Based Algorithm for Discovering Clusters in Large Spatial Databases with Noise. *Anais do KDD-96*, 226–231. — DBSCAN.
+* Campello, R. J. G. B., Moulavi, D. & Sander, J. (2013). Density-Based Clustering Based on Hierarchical Density Estimates. *PAKDD 2013*, LNCS 7819, 160–172. — HDBSCAN.
+* Kazhdan, M., Bolitho, M. & Hoppe, H. (2006). Poisson Surface Reconstruction. *Symposium on Geometry Processing*, 61–70.
+* Kazhdan, M. & Hoppe, H. (2013). Screened Poisson Surface Reconstruction. *ACM Transactions on Graphics* 32(3), 1–13. — a variante que o Open3D implementa.
+* Bernardini, F. et al. (1999). The Ball-Pivoting Algorithm for Surface Reconstruction. *IEEE Transactions on Visualization and Computer Graphics* 5(4), 349–359.
+* Otsu, N. (1979). A Threshold Selection Method from Gray-Level Histograms. *IEEE Transactions on Systems, Man, and Cybernetics* 9(1), 62–66.
+* Satopää, V., Albrecht, J., Irwin, D. & Raghavan, B. (2011). Finding a "Kneedle" in a Haystack: Detecting Knee Points in System Behavior. *ICDCS Workshops*, 166–171. — joelho da k-distância.
+* Fischler, M. A. & Bolles, R. C. (1981). Random Sample Consensus. *Communications of the ACM* 24(6), 381–395. — RANSAC.
+* Matthews, B. W. (1975). Comparison of the predicted and observed secondary structure of T4 phage lysozyme. *Biochimica et Biophysica Acta* 405(2), 442–451. — coeficiente MCC.
+* Hubert, L. & Arabie, P. (1985). Comparing partitions. *Journal of Classification* 2, 193–218. — Índice Rand Ajustado.
+
+### Software
+
+* Zhou, Q.-Y., Park, J. & Koltun, V. (2018). Open3D: A Modern Library for 3D Data Processing. *arXiv:1801.09847*.
+* Pedregosa, F. et al. (2011). Scikit-learn: Machine Learning in Python. *JMLR* 12, 2825–2830.
+* Harris, C. R. et al. (2020). Array programming with NumPy. *Nature* 585, 357–362.
+* Virtanen, P. et al. (2020). SciPy 1.0: fundamental algorithms for scientific computing in Python. *Nature Methods* 17, 261–272.
+* McKinney, W. (2010). Data Structures for Statistical Computing in Python. *Anais da 9ª Python in Science Conference*, 56–61. — pandas.
+* Hunter, J. D. (2007). Matplotlib: A 2D Graphics Environment. *Computing in Science & Engineering* 9(3), 90–95.
+* van der Walt, S. et al. (2014). scikit-image: image processing in Python. *PeerJ* 2:e453.
+
+### Arqueologia e geofísica
+
+* Conyers, L. B. (2023). *Ground-Penetrating Radar for Archaeology*, 4ª ed. Lanham: Rowman & Littlefield.
+* Jol, H. M. (org.) (2009). *Ground Penetrating Radar: Theory and Applications*. Amsterdã: Elsevier.
+* Gaffney, C. & Gater, J. (2003). *Revealing the Buried Past: Geophysics for Archaeologists*. Stroud: Tempus.
+* Schmidt, A. et al. (2015). *EAC Guidelines for the Use of Geophysics in Archaeology: Questions to Ask and Points to Consider*. EAC Guidelines 2. Namur: Europae Archaeologiae Consilium.
+* Conolly, J. & Lake, M. (2006). *Geographical Information Systems in Archaeology*. Cambridge: Cambridge University Press.
+* Renfrew, C. & Bahn, P. (2016). *Archaeology: Theories, Methods and Practice*, 7ª ed. Londres: Thames & Hudson.
+* Bevan, A. & Lake, M. (orgs.) (2013). *Computational Approaches to Archaeological Spaces*. Walnut Creek: Left Coast Press.
+* de Berg, M., Cheong, O., van Kreveld, M. & Overmars, M. (2008). *Computational Geometry: Algorithms and Applications*, 3ª ed. Berlim: Springer.
 
 ---
 
 ## 📄 Licença
 
-Este projeto é de uso **acadêmico e educacional**.
+**Código** — [GNU Affero General Public License v3.0](LICENSE) (AGPL-3.0)
 
-* **Livre uso:** Você pode modificar e distribuir este código para fins de aprendizado e pesquisa.
-* **Dados Sintéticos:** Observe que os dados arqueológicos gerados neste pipeline são **simulados** (geração procedural) e não representam sítios reais protegidos.
+Você pode usar, estudar, modificar e redistribuir este código. Em troca, a AGPL pede reciprocidade: se você distribuir uma versão modificada (§5), ou permitir que usuários interajam com uma versão modificada remotamente por meio de uma rede (§13), precisa disponibilizar a eles o código-fonte correspondente sob a mesma licença.
 
----
+**Documentação, narrativa, figuras e dados sintéticos** —
+[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+
+**Licenciamento comercial** — Há uma licença separada para organizações que
+precisem evitar as obrigações de reciprocidade da AGPL, por exemplo para embutir
+o Chronos AI em um produto proprietário ou serviço hospedado. Veja [LICENSE-COMMERCIAL.pt-br.md](docs/LICENSE-COMMERCIAL.pt-br.md). Aquele documento é informativo e não concede nada por si só; qualquer licença comercial exige acordo assinado.
+
+Universidades, museus e instituições de patrimônio sem fins lucrativos podem usar o software sob a AGPL-3.0 sem licença comercial. Elas continuam sujeitas à AGPL se distribuírem modificações ou operarem um serviço de rede baseado nelas.
+
+**Escopo** — Apenas o material de titularidade do detentor dos direitos é
+licenciado aqui. Dependências de terceiros não são redistribuídas e permanecem sob suas próprias condições.
+
+**Versões anteriores** — Releases publicados sob a Licença MIT continuam
+disponíveis sob a Licença MIT. Mudança de licença não é retroativa.
+
+**Dados sintéticos** — Todos os dados arqueológicos deste repositório são gerados proceduralmente e não representam sítios reais protegidos.
+
+Copyright © 2026 Isaac Davi.
