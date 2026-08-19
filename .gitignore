@@ -1,18 +1,21 @@
-# Python cache
+# --- Saídas geradas ---------------------------------------------------------
+data/generated/
+notebooks/**/*.csv
+*.obj
+*.ply
+*.html
+dados/gerados/
+
+# --- Coordenadas precisas de sítios -----------------------------------------
+*_precise.csv
+*_preciso.csv
+*_interno.csv
+**/sensitive/
+
+# --- Ambiente ---------------------------------------------------------------
+.venv*/
+venv/
 __pycache__/
 *.py[cod]
-*$py.class
-
-# Jupyter Notebook checkpoints
-.ipynb_checkpoints
-
-# Virtual Environments
-venv/
-env/
-.env
-.venv*
-
-# OS Metadata
+.ipynb_checkpoints/
 .DS_Store
-Thumbs.db
-

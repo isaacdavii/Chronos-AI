@@ -1,0 +1,8 @@
+# Ferramentas de desenvolvimento — não necessárias para rodar o app
+-r requirements.txt
+
+nbstripout>=0.7               # hook de pre-commit: tira saídas dos notebooks
+ruff>=0.4                     # lint
+pytest>=8.0
+nbmake>=1.5                   # pytest --nbmake executa os notebooks no CI
+ipykernel>=6.29               # registrar o venv como kernel do Jupyter

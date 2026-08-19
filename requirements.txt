@@ -1,9 +1,39 @@
-pandas>=1.3.0
-numpy>=1.21.0
-matplotlib>=3.4.0
-plotly>=5.1.0
-scikit-learn>=0.24.0
-folium>=0.12.0
-streamlit>=1.20.0
-open3d
-laspy[lazrs]
+# Chronos AI — dependências de execução
+#
+# ⚠️ VERSÃO DO PYTHON: use 3.10, 3.11 ou 3.12.
+#    O Open3D 0.19 publica wheels apenas para cp38-cp312. NÃO existe wheel
+#    cp313, então em Python 3.13 os módulos 3D não instalam e a Parte III
+#    falha com ModuleNotFoundError.
+#
+#        python3.11 -m venv .venv && source .venv/bin/activate
+#        pip install -r requirements.txt
+
+# --- núcleo -----------------------------------------------------------------
+numpy>=1.24,<3.0
+pandas>=2.0,<3.0
+scipy>=1.10,<2.0
+
+# --- machine learning -------------------------------------------------------
+scikit-learn>=1.3,<2.0        # 1.3+ traz sklearn.cluster.HDBSCAN
+scikit-image>=0.22            # limiar de Otsu (Parte II: IoU 0,853 -> 0,980)
+
+# --- visualização -----------------------------------------------------------
+matplotlib>=3.7,<4.0
+plotly>=5.15,<7.0
+folium>=0.14,<1.0
+
+# --- geometria 3D e ingestão LIDAR ------------------------------------------
+open3d>=0.18,<0.20            # cp38-cp312 apenas; ver o aviso no topo
+alphashape>=1.3,<2.0
+laspy[lazrs]>=2.5,<3.0
+
+# --- geodésia ---------------------------------------------------------------
+pyproj>=3.6                   # conversão correta; o 111000 fixo erra 2,33 m
+
+# --- aplicação web ----------------------------------------------------------
+streamlit>=1.49,<2.0          # `width='stretch'` só existe a partir daqui
+
+# --- opcionais --------------------------------------------------------------
+# hdbscan>=0.8.33             # apenas para a métrica DBCV; o HDBSCAN em si
+                              # já vem no scikit-learn >= 1.3
+# kneed>=0.8                  # joelho da k-distância (já implementado à mão)

@@ -1,2 +1,5 @@
-mesa-utils
+# Pacotes de sistema para o Streamlit Community Cloud (Debian/Ubuntu).
+# libgl1 é necessário para o Open3D em modo headless e faltava na lista original.
+libgl1
 libgomp1
+libglib2.0-0
